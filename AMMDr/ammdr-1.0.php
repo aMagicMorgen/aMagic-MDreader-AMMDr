@@ -6,6 +6,7 @@ $ammdr = 'AMMDreader ver. 1.0 - aMagic Markdown Reader';
 $ammdr_short = 'AMMDr 1.0';
 
 // Функция для рекурсивного сканирования директорий и поиска .md файлов
+/*
 function scanDirectory($dir) {
     $result = [];
     $files = scandir($dir);
@@ -24,7 +25,42 @@ function scanDirectory($dir) {
     
     return $result;
 }
-
+*/
+function scanDirectory($dir = '.') {
+	/*
+    $cacheFile = 'ammdr-files.json';
+    // Загрузка из кеша
+    if (file_exists($cacheFile) && !isset($_GET['scan'])) {
+        return json_decode(file_get_contents($cacheFile), true);
+    }
+	*/
+    $result = [];
+    foreach (scandir($dir) as $file) {
+        if ($file === '.' || $file === '..') continue;
+        $path = $dir . DIRECTORY_SEPARATOR . $file;
+        if (is_dir($path)) {
+            $subResult = scanDirectory($path);
+            if (!empty($subResult)) $result[$file] = $subResult;
+        } elseif (pathinfo($path, PATHINFO_EXTENSION) === 'md')  $result[] = $file;
+    }
+    // Очищаем пустые папки
+    $result = removeEmptyFolders($result);
+	//Запись в кеш
+    //file_put_contents($cacheFile, json_encode($result, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    return $result;
+}
+// Функция Очищистки пустые папки
+function removeEmptyFolders(array $data) {
+    foreach ($data as $key => $value) {
+        if (is_array($value)) {
+            $data[$key] = removeEmptyFolders($value);
+            if (empty($data[$key]) && !is_numeric($key)) {
+                unset($data[$key]);
+            }
+        }
+    }
+    return $data;
+}
 // Функция для генерации HTML-меню из структуры директорий
 function generateMenu($structure, $basePath = '') {
     $html = '<ul class="nav-menu">';
