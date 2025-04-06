@@ -1,4 +1,4 @@
-# **aMMDreader - aMagic Markdown Reader**  
+# **aMMDr - aMagic Markdown Reader**  
 ### САЙТ ЗА 5 СЕКУНД из `*.md` файлов
 
 ---
