@@ -4,6 +4,7 @@
 ---
 #### **Хотите за 5 секунд превратить сои папки с `*.md` файлами в сайт?** 
 https://github.com/aMagicMorgen/aMagic-MDreader-AMMDr
+Скачать последнюю версию [ammdr-4.0](https://github.com/aMagicMorgen/aMagic-MDreader-AMMDr/tree/main/ammdr-4.0) | [Примеры использования](https://github.com/aMagicMorgen/aMagic-MDreader-AMMDr/tree/main/ammdr-4.0)
 - AMMDr ver. 3.0 06.04.2025 Алексей Нечаев, г. Москва, +7(999)003-90-23, nechaev72@list.ru
 - Вставьте файл `ammdr.php`  в свою главную папку, где в подпапках есть  файлы `*.md` или в корень сайта,      
 - переименуйте его как хотите или в `index.php` и запустите.     
