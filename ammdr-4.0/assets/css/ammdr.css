@@ -1,0 +1,511 @@
+/* ./assets/css/ammdr.css */
+ /* ==================== */
+/* БАЗОВЫЕ СТИЛИ */
+/* ==================== */
+
+/**
+ * Сброс стилей и базовые настройки
+ * Устанавливает box-model, шрифты и основные параметры документа
+ */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, 
+				sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Основная структура документа */
+body {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 300px 1fr;
+	grid-template-areas: 
+		"header header"
+		"nav main"
+		"footer footer";
+	min-height: 100vh;
+	color: #24292e;
+	line-height: 1.5;
+	overflow: hidden;
+}
+
+/* ==================== */
+/* КОМПОНЕНТЫ МАКЕТА */
+/* ==================== */
+
+/* Шапка документа */
+header {
+	grid-area: header;
+	background: #f8f9fa;
+	padding: 1rem;
+	border-bottom: 1px solid #e1e4e8;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Основная навигация (левая панель) */
+nav {
+	grid-area: nav;
+	background: #f8f9fa;
+	padding: 0.5rem;
+	border-right: 1px solid #e1e4e8;
+	#overflow-y: auto;
+	height: calc(100vh - 120px);
+	scrollbar-width: thin;
+	scrollbar-color: #c1c1c1 #f1f1f1;
+}
+/*	
+nav {
+	position: fixed;
+	top: 0;
+	left: -300px;
+	width: 280px;
+	height: 100vh;
+	z-index: 1000;
+	transition: left 0.3s ease;
+	box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+*/
+/* Основное содержимое */
+main {
+	grid-area: main;
+	padding: 2rem;
+	overflow-y: auto;
+	height: calc(100vh - 120px);
+	scrollbar-width: thin;
+	scrollbar-color: #0366d6 #f1f1f1;
+	background-color: #fff;
+}
+
+/* Контейнер для ограничения ширины контента */
+.content-wrapper {
+	max-width: 800px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+/* Подвал документа */
+footer {
+	grid-area: footer;
+	background: #f8f9fa;
+	padding: 1rem;
+	border-top: 1px solid #e1e4e8;
+	text-align: center;
+	font-size: 0.9rem;
+	color: #6c757d;
+}
+
+/* ==================== */
+/* ЭЛЕМЕНТЫ НАВИГАЦИИ */
+/* ==================== */
+
+/* Список в навигации */
+nav ul {
+	list-style: none;
+	padding-left: 1rem;
+}
+
+nav li {
+	margin: 0.1rem 0;
+}
+
+/* Стили для папок */
+.folder {
+	margin-left: -0.5rem; /* Уменьшенный отступ для компактности */
+	padding-left: 0;
+}
+
+.folder-name {
+	cursor: pointer;
+	font-weight: 600;
+	display: flex;
+	align-items: flex-start;
+	transition: all 0.2s ease;
+	color: #24292e;
+	border-radius: 4px;
+	padding-left: 0.5rem;
+	margin-left: -0.5rem;
+}
+
+.folder-name:hover {
+	background-color: #e1e4e8;
+}
+
+/* Иконка закрытой папки (зеленый) */
+.folder-name::before {
+	content: "📁 ";
+	color: #2ecc71;
+}
+
+/* Иконка открытой папки (желтый) */
+.folder.expanded > .folder-name::before {
+	content: "📂 ";
+	color: #f39c12;
+}
+
+/* Вложенный список в папке */
+.folder > ul {
+	display: none;
+	margin-left: 0.5rem;
+	padding-left: 0.5rem;
+}
+
+.folder.expanded > ul {
+	display: block;
+}
+
+/* Стили для файлов */
+.file {
+	margin-left: -1rem; /* Уменьшенный отступ для компактности */
+	padding-left: 0;
+}
+
+.file a {
+	position: relative;
+	padding-left: 1.2rem;
+	display: flex;
+	align-items: flex-start;
+	min-height: 1.5em;
+	transition: all 0.2s ease;
+	border-radius: 4px;
+	color: inherit;
+}
+
+/* Иконка файла (сиреневая) */
+.file a::before {
+	content: "📄";
+	position: absolute;
+	left: 0.2rem;
+	top: 0.4em;
+	font-size: 0.9em;
+	line-height: 1;
+	color: #ca2ecc;
+	transition: color 0.2s ease;
+}
+
+/* Состояния иконки файла */
+.file a:hover::before,
+.file a.active::before {
+	color: #ff0000; /* Ярко-красный при наведении/активном состоянии */
+}
+
+.file a:hover {
+	background-color: #e1e4e8;
+}
+
+/* Активный файл */
+.file a.active {
+	color: #0366d6;
+	font-weight: 500;
+	background-color: #e1e4e8;
+}
+
+/* ==================== */
+/* ССЫЛКИ */
+/* ==================== */
+
+a {
+	color: #0366d6;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* ==================== */
+/* СКРОЛЛБАРЫ */
+/* ==================== */
+
+/* Навигационная панель */
+nav::-webkit-scrollbar {
+	width: 8px;
+}
+nav::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 4px;
+}
+nav::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 4px;
+}
+nav::-webkit-scrollbar-thumb:hover {
+	background: #a8a8a8;
+}
+
+/* Основное содержимое */
+main::-webkit-scrollbar {
+	width: 10px;
+}
+main::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+main::-webkit-scrollbar-thumb {
+	background: #0366d6;
+	border-radius: 5px;
+}
+main::-webkit-scrollbar-thumb:hover {
+	background: #0252b3;
+}
+
+/* ==================== */
+/* КОМПОНЕНТЫ ИНТЕРФЕЙСА */
+/* ==================== */
+
+/* Индикатор загрузки */
+.loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.8);
+	color: white;
+	padding: 12px 24px;
+	border-radius: 6px;
+	display: none;
+	z-index: 1000;
+	font-size: 0.9rem;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+	0% { opacity: 0.8; }
+	50% { opacity: 1; }
+	100% { opacity: 0.8; }
+}
+
+/* ==================== */
+/* СТИЛИ ДЛЯ MARKDOWN (zero-md) */
+/* ==================== */
+
+zero-md {
+	width: 100%;
+	min-height: 100%;
+	background: white;
+	border-radius: 6px;
+	padding: 1px; /* Необходимо для корректного отображения теней */
+}
+
+/* Заголовки */
+zero-md h1, 
+zero-md h2, 
+zero-md h3 {
+	scroll-margin-top: 20px; /* Отступ для якорных ссылок */
+}
+
+/* Блоки кода */
+zero-md pre {
+	border-radius: 6px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+zero-md code {
+	font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+	font-size: 0.9em;
+}
+/* Меню - иконка "гамбургер" */
+.menu-btn {
+	#display: none;
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	width: 30px;
+	height: 24px;
+	cursor: pointer;
+	z-index: 1001;
+}
+
+/* Мобильное меню - иконка "гамбургер" */
+.mobile-menu-btn {
+	#display: none;
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+	width: 30px;
+	height: 24px;
+	cursor: pointer;
+	z-index: 1001;
+}
+
+.menu-btn span {
+	display: block;
+	width: 100%;
+	height: 3px;
+	background: #0366d6;
+	margin-bottom: 5px;
+	transition: all 0.3s ease;
+}
+.mobile-menu-btn span {
+	display: block;
+	width: 100%;
+	height: 3px;
+	background: #0366d6;
+	margin-bottom: 5px;
+	transition: all 0.3s ease;
+}
+
+.menu-btn.active span:nth-child(1) {
+	transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+	transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.active span:nth-child(2) {
+	opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+	opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+	transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+	transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Адаптивные стили */
+@media (max-width: 600px) {
+body {
+	grid-template-columns: 1fr;
+	grid-template-areas: 
+		"header"
+		"main"
+		"footer";
+}
+
+.full-title { display: none; }
+.short-title { display: inline; }
+
+nav.active {
+	left: 0px;
+}
+
+.mobile-menu-btn {
+	display: block;
+}
+
+.menu-btn {
+	display: none;
+}
+
+main {
+	padding: 1rem;
+}
+}
+
+@media (min-width: 601px) {
+.full-title { display: inline; }
+.short-title { display: none; }
+}  
+/* Стили для контейнера элементов управления навигацией */
+#nav-controls {
+display: flex;
+flex-wrap: wrap;
+gap: 7px;
+margin-top: 0px; /* Поднимаем элемент вверх */
+margin-bottom: 5px;
+padding-bottom: 10px;
+border-bottom: 1px solid #e1e4e8;
+}
+
+#nav-controls {
+    #padding: 8px 12px;
+    #margin-bottom: 10px;
+    #width: 100%;
+    #box-sizing: border-box;
+}
+.nav-btn {
+	padding: 1px 16px;
+	background-color: #f0f0f0;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 24px;
+	transition: background-color 0.2s;
+}
+
+.nav-btn:hover {
+	background-color: #e0e0e0;
+}
+
+#menu-container {
+	overflow-y: auto;
+	height: calc(100% - 60px);
+}
+
+/* Анимация для панели навигации */
+
+#main-nav {
+	position: fixed;
+	top: 81px;
+	left: -280px;
+	width: 280px;
+	height: 100vh;
+	z-index: 1000;
+	transition: left 0.3s ease;
+	box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+#main-nav.active {
+	left: 0px;
+} 
+
+
+
+/* Стили для поля поиска */
+#search.form-control {
+    width: 80%;
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 10px; /* Закругленные углы */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    height: 30px; /* Увеличенная высота */
+    box-sizing: border-box;
+}
+
+/* Стиль при фокусе */
+#search.form-control:focus {
+    border-color: #80bdff; /* Голубая рамка при фокусе */
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Стиль при наведении */
+#search.form-control:hover {
+    border-color: #b3b3b3;
+}
+
+/* Стиль для placeholder */
+#search.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+/* Анимация изменения цвета рамки при вводе */
+#search.form-control:not(:placeholder-shown) {
+    border-color: #28a745; /* Зеленый цвет при вводе */
+}
+
+/* Дополнительные стили для темной темы (опционально) */
+@media (prefers-color-scheme: dark) {
+    #search.form-control {
+        background-color: #343a40;
+        border-color: #495057;
+        color: #f8f9fa;
+    }
+    #search.form-control::placeholder {
+        color: #adb5bd;
+    }
+}
