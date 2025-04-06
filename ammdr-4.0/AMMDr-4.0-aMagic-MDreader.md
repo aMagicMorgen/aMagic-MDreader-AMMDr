@@ -183,6 +183,4 @@ echo $menu->generateMenu($menu->getFiles(), 'tree');
 
 ---
 
-
-
-[Скачать последнюю версию](ammdr-4.0) | [Примеры использования](#)
+Скачать последнюю версию [ammdr-4.0](https://github.com/aMagicMorgen/aMagic-MDreader-AMMDr/tree/main/ammdr-4.0) | [Примеры использования](https://github.com/aMagicMorgen/aMagic-MDreader-AMMDr/tree/main/ammdr-4.0)
