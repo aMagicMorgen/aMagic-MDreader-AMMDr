@@ -4,7 +4,7 @@
 
 - Версии ver. 3.0, 4.0 работают только на localhost (пока разбираюсь с AJAX запросами)
 
-- Добавил test.php для тестирования
+- Добавил test.php и phpinfo.php для тестирования
 ---
 #### **Хотите за 5 секунд превратить сои папки с `*.md` файлами в сайт?** 
 https://github.com/aMagicMorgen/aMagic-MDreader-AMMDr
