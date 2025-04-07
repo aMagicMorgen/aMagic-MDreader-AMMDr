@@ -91,7 +91,7 @@ $menuHtml = $menu->generateMenu($menu->getFiles(), 'tree');
             
             <!-- Кнопки переключения вида -->
             <button class="nav-btn active" data-view="tree" title="Древовидный список">
-                <?xml version="1.0" ?><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M9 1H1V9H9V6H11V20H15V23H23V15H15V18H13V6H15V9H23V1H15V4H9V1ZM21 3H17V7H21V3ZM17 17H21V21H17V17Z" fill="currentColor" fill-rule="evenodd"/></svg>
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M9 1H1V9H9V6H11V20H15V23H23V15H15V18H13V6H15V9H23V1H15V4H9V1ZM21 3H17V7H21V3ZM17 17H21V21H17V17Z" fill="currentColor" fill-rule="evenodd"/></svg>
             </button>
             
             <button class="nav-btn" data-view="last-dirs" title="По папкам" style="color: #f39c12;">
