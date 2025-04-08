@@ -2,8 +2,9 @@
 ### САЙТ ЗА 5 СЕКУНД из `*.md` файлов
 - Работают ver. 1.0, 1.1, 2.0(лучше чем 1.х) начальная идея
 - Версии ver. 3.0 или 3.1 все в одном файле! Забрось в свою директорию и запусти!
-- В  ver. 3.1 css 	`<link href="https://cdn.jsdelivr.net/gh/aMagicMorgen/aMagic-MDreader-AMMDr@main/ammdr-4.0/assets/css/ammdr.css" rel="stylesheet" >`
-js     `<script src="https://cdn.jsdelivr.net/gh/aMagicMorgen/aMagic-MDreader-AMMDr@main/AMMDr/ammdr-3.0.js"></script>`
+- В  ver. 3.1    
+  css 	`<link href="https://cdn.jsdelivr.net/gh/aMagicMorgen/aMagic-MDreader-AMMDr@main/ammdr-4.0/assets/css/ammdr.css" rel="stylesheet" >`    
+  js   `<script src="https://cdn.jsdelivr.net/gh/aMagicMorgen/aMagic-MDreader-AMMDr@main/AMMDr/ammdr-3.0.js"></script>`
 
 - ver. 4.0 уже структура папок, class, css, js в отдельных папках
 - Добавил test.php и phpinfo.php для тестирования
